@@ -52,14 +52,17 @@ if(isset($_POST['upload'])) {
                     }
 
                     //An excel file may contains many sheets, so we have to specify which one we need to read or work with.
-                    $sheet = $objPHPExcel->getSheet(0);
+                    $sheet          = $objPHPExcel->getSheet(0);
                     //It returns the highest number of rows
-                    $total_rows = $sheet->getHighestRow();
+                    $total_rows     = $sheet->getHighestRow();
                     //It returns the highest number of columns
                     $highest_column = $sheet->getHighestColumn();
 
                     echo '<h4>Data from excel file</h4>';
                     echo '<table cellpadding="5" cellspacing="1" border="1" class="responsive" style="margin-left: 200px;">';
+
+                    $truncateTable = 'TRUNCATE job_details';
+                    $mysqli->query($truncateTable);
 
                     $query = "insert into job_details (job_id, job_title, date_time) VALUES ";
                     //Loop through each row of the worksheet
