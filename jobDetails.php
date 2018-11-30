@@ -30,7 +30,7 @@
                     <tbody>
                     <?php
                     /* Result fetching from database */
-                    if ($results = $mysqli->query("SELECT COUNT(job_id) AS job_id, job_title, MIN(date_time) AS first_access, MAX(date_time) AS last_access FROM job_details GROUP BY job_id")) {
+                    if ($results = $mysqli->query("SELECT COUNT(job_id) AS job_id, job_title, MIN(date_time) AS first_access, MAX(date_time) AS last_access FROM job_details GROUP BY job_title")) {
                         if($results->num_rows > 0) {
                             while($jobDetails = $results->fetch_assoc())
                             {
