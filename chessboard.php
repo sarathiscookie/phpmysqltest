@@ -15,6 +15,21 @@
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">GD Library</h1>
 
+            <div class="col-sm-12">
+                <h2>It is 8 * 8. So height, width and field width calculation should be match otherwise not get correct result.</h2>
+
+                <h2>Here are some matching scenarios. Default width: 400, height:400 and field width: 50</h2>
+
+                <dt>Height</dt>
+                <dd>200,400,600,800,1000,1200</dd>
+                <dt>Width</dt>
+                <dd>200,400,600,800,1000,1200</dd>
+                <dt>Field width</dt>
+                <dd>25,50,75,100,125,150</dd>
+            </div>
+
+            <div class="col-sm-12"></div>
+
             <div class="col-sm-6">
                 <form action="" method="get">
                     <div class="form-group">
@@ -36,7 +51,9 @@
                 if(isset($_REQUEST['generateImage'] )) {
                     //header('Content-type: image/png');
 
-                    $imageCreate = @imagecreate(400, 400)
+                    $height      = $_REQUEST['height'] ? $_REQUEST['height'] : 400;
+                    $width       = $_REQUEST['width'] ? $_REQUEST['width'] : 400;
+                    $imageCreate = @imagecreate($width, $height)
                     or die("Cannot Initialize new GD image stream");
                     $grey        = imagecolorallocate($imageCreate, 229, 229, 229);
                     $black       = imagecolorallocate($imageCreate,0,0,0);
@@ -49,8 +66,8 @@
 
                     for ($i = 1; $i < 8; $i++) {
                         $cord = $i * $fieldWidth;
-                        imageline($imageCreate,0, $cord,400, $cord, $black);
-                        imageline($imageCreate, $cord,0, $cord,400, $black);
+                        imageline($imageCreate,0, $cord, $height, $cord, $black);
+                        imageline($imageCreate, $cord,0, $cord, $height, $black);
                     }
 
                     for ($i = 0; $i < 8; $i++)  {
@@ -67,7 +84,7 @@
                     imagedestroy($imageCreate);
                     ?>
                     <h1>Image will find out in "img/chessboard.php" folder</h1>
-                    <img src="img/chessboard.png" alt="chessboard" width="400" height="400">
+                    <img src="img/chessboard.png" alt="chessboard">
                     <?php
                 }
                 ?>
