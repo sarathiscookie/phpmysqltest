@@ -48,9 +48,11 @@
                     }
                 })
                 .fail(function(data, jqxhr, textStatus, error) {
-
+                    $( "#result" ).html('<div class="alert alert-danger alert-dismissible" role="alert">\n' +
+                        '  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n' +
+                        '  <strong>Warning!</strong> Something went wrong' +
+                        '</div>');
                 });
-            //alert( "First handler for .toggle() called." );
         }, function() {
             var txt     = $( "#text" ).html();
             var forward = "forward";
@@ -67,9 +69,11 @@
                     }
                 })
                 .fail(function(data, jqxhr, textStatus, error) {
-
+                    $( "#result" ).html('<div class="alert alert-danger alert-dismissible" role="alert">\n' +
+                        '  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>\n' +
+                        '  <strong>Warning!</strong> Something went wrong' +
+                        '</div>');
                 });
-            //console.log( "Second handler for .toggle() called." );
         });
     })(jQuery);
 

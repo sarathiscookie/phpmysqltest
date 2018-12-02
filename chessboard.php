@@ -83,7 +83,7 @@
                     imagepng($imageCreate, 'img/chessboard.png');
                     imagedestroy($imageCreate);
                     ?>
-                    <h1>Image will find out in "img/chessboard.php" folder</h1>
+                    <h1>Image will find out in "img/chessboard.png" folder</h1>
                     <img src="img/chessboard.png" alt="chessboard">
                     <?php
                 }
