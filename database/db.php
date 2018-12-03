@@ -2,7 +2,7 @@
 // defining variables
 define('HOSTNAME','localhost');
 define('DB_USERNAME','root');
-define('DB_PASSWORD','root');
+define('DB_PASSWORD','');
 define('DB_NAME', 'phpmysqltest');
 
 //global $con;
